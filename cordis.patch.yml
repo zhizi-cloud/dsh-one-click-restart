@@ -1,0 +1,12 @@
+# dsh-one-click-restart bundle patch.
+#
+# Inserts this plugin as its own loader row so the host half (HTTP routes,
+# continuous snapshot writer, watchdog supervisor, restart recovery) mounts
+# independently of any other plugin: disabling something else never takes the
+# restart trigger away.
+#
+# The client half is discovered from package.json `dsh.client` and is served by
+# the client-modules service; it needs no row of its own.
+- insert:
+    - id: one-click-restart
+      name: dsh-one-click-restart

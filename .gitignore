@@ -1,0 +1,21 @@
+# Dependencies — restored with `pnpm install`
+node_modules/
+
+# Build output IS committed on purpose: the package is installed by other
+# people directly from the repository, and `lib/` is what the host loads.
+# (Remove this note and the negation below if you prefer to build on install.)
+!lib/
+
+# Packed artifacts belong in a GitHub Release, not in the tree
+*.tgz
+
+# Local state and logs
+*.log
+.dsh-ocr-*
+
+# Editor / OS noise
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
+ehthumbs.db

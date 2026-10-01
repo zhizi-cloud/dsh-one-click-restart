@@ -1,0 +1,80 @@
+{
+  "name": "dsh-one-click-restart",
+  "version": "1.0.0",
+  "description": "One-click restart for DeepSeek Harness: a refresh-icon seat in the session header plus a system-wide hotkey backed by an out-of-tree PowerShell watchdog, so the application can be restarted even when the host process is frozen — then interrupted task-board cards, goals and cut-off session turns are resumed automatically. Zero runtime dependencies.",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "restart",
+    "watchdog",
+    "recovery"
+  ],
+  "type": "module",
+  "icon": "icon.svg",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/**/*.js",
+    "src",
+    "scripts",
+    "watchdog/**/*.ps1",
+    "cordis.patch.yml",
+    "SHARE.md",
+    "GITHUB-GUIDE.md",
+    "icon.svg",
+    "tsconfig.json",
+    "README.md",
+    "README.zh.md"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhizi-cloud/dsh-one-click-restart.git"
+  },
+  "homepage": "https://github.com/zhizi-cloud/dsh-one-click-restart#readme",
+  "bugs": {
+    "url": "https://github.com/zhizi-cloud/dsh-one-click-restart/issues"
+  },
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "dsh": {
+    "engines": {
+      "dsh": ">=0.2.0-rc.1"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-renderer"
+      ],
+      "platform": "web"
+    }
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.0",
+    "@types/react": "~18.3.1",
+    "@types/react-dom": "~18.3.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.6.3"
+  }
+}

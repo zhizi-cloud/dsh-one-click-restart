@@ -1,0 +1,15 @@
+# Normalize line endings so the repository stays consistent across platforms.
+#
+# Without this, Git on Windows warns about every text file it touches and the
+# working copy drifts between LF and CRLF. `text=auto` stores LF in the
+# repository and checks out the platform default.
+* text=auto
+
+# PowerShell scripts are the exception: they are executed by Windows
+# PowerShell 5.1, which is happiest with CRLF, and they ship to Windows only.
+*.ps1 text eol=crlf
+
+# Binary assets must never be converted.
+*.tgz binary
+*.png binary
+*.ico binary
